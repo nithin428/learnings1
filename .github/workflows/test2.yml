@@ -1,0 +1,26 @@
+name: tes2
+on: push 
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkeout repo
+        uses: actions/checkout@v4
+      - name: use node.js
+        uses: actions/setup-node@v4
+      - run: nmp install
+      - run: npm run build
+
+  test: 
+    needs: build
+    runs-on: ubuntu-latest
+    steps: 
+      - name: checkout repo
+        uses: action/checkout@v4
+      - name: use node.js
+        uses: actions/setup-node@v4
+      - run: npm install
+      - run: npm test
+    
+  
+  
